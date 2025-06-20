@@ -1,60 +1,618 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Карелия</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карелия - Край тысячи озер</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#2563eb',
+                        secondary:'#4f46e5'
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Stunning%20panoramic%20view%20of%20Karelia%20landscape%20with%20crystal%20clear%20lake%20surrounded%20by%20dense%20pine%20forests.%20Beautiful%20northern%20nature%20with%20reflections%20in%20calm%20water.%20Misty%20morning%20atmosphere%20with%20soft%20sunlight%20breaking%20through%20trees.%20Peaceful%20wilderness%20scene%20with%20rocky%20shores%20and%20small%20islands&width=1920&height=1080&seq=hero1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .custom-slider {
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .custom-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .destination-card:hover .destination-overlay {
+            opacity: 1;
+        }
+        
+        .custom-checkbox {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .custom-checkbox input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#gallery">Галерея</a></li>
-                <li><a href="#catalog">Каталог</a></li>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
-        </nav>
+<body class="bg-gray-50">
+    <!-- Навигационное меню -->
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary">Карелия</a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="font-medium text-gray-700 hover:text-primary transition">О Карелии</a>
+                <a href="#destinations" class="font-medium text-gray-700 hover:text-primary transition">Направления</a>
+                <a href="#attractions" class="font-medium text-gray-700 hover:text-primary transition">Достопримечательности</a>
+                <a href="#contact" class="font-medium text-gray-700 hover:text-primary transition">Контакты</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#contact" class="hidden md:block px-5 py-2 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-blue-600 transition">Связаться с нами</a>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <section id="hero" class="hero" data-aos="fade-in">
-        <h1>Карелия</h1>
-        <img src="img/6.jpg" alt="Карелия главный фон">
-    </section>
-
-    <section id="gallery" class="section" data-aos="fade-up">
-        <h2>Галерея</h2>
-        <div class="gallery">
-            <img src="img/1.jpg" alt="Галерея 1" data-aos="zoom-in">
-            <img src="img/2.jpg" alt="Галерея 2" data-aos="zoom-in" data-aos-delay="100">
+    <!-- Главный экран (Hero Section) -->
+    <section class="hero-section min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center py-20">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Откройте для себя магию Карелии</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Край тысячи озер, древних лесов и удивительных пейзажей</p>
+            <a href="#destinations" class="px-8 py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-blue-600 transition text-lg">Исследовать направления</a>
         </div>
     </section>
 
-    <section id="catalog" class="section" data-aos="fade-right">
-        <h2>Каталог</h2>
-        <img src="img/3.jpg" alt="Каталог">
+    <!-- Секция "О Карелии" -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">О Карелии</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-700">Карелия — удивительный край на северо-западе России, известный своей нетронутой природой, кристально чистыми озерами и богатым культурным наследием. Это место, где время замедляется, а природа раскрывается во всей своей красе.</p>
+                    
+                    <p class="text-lg text-gray-700">Здесь вы найдете более 60 000 озер, включая крупнейшие в Европе — Ладожское и Онежское. Древние карельские леса, покрывающие большую часть территории, создают атмосферу настоящей северной сказки.</p>
+                    
+                    <p class="text-lg text-gray-700">Карелия — это также край богатой истории и культуры. Здесь сохранились древние петроглифы, деревянные церкви и часовни, а местные жители бережно хранят традиции карельского народа.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="https://readdy.ai/api/search-image?query=Ruskeala%20Marble%20Canyon%20in%20Karelia%2C%20Russia.%20Beautiful%20turquoise%20water%20surrounded%20by%20marble%20cliffs.%20Stunning%20natural%20landmark%20with%20crystal%20clear%20water%20reflecting%20the%20surrounding%20forest.%20Peaceful%20serene%20atmosphere%20with%20soft%20lighting&width=600&height=400&seq=about1&orientation=landscape" alt="Мраморный каньон Рускеала" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="https://readdy.ai/api/search-image?query=Traditional%20wooden%20Karelian%20house%20with%20intricate%20carvings%2C%20surrounded%20by%20pine%20trees.%20Authentic%20northern%20Russian%20architecture%20with%20detailed%20wooden%20decorations.%20Historical%20building%20in%20rural%20setting%20with%20natural%20surroundings.%20Cultural%20heritage%20site%20with%20traditional%20design%20elements&width=600&height=400&seq=about2&orientation=landscape" alt="Традиционная карельская архитектура" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="https://readdy.ai/api/search-image?query=Kizhi%20Island%20wooden%20church%20with%20multiple%20domes%2C%20UNESCO%20World%20Heritage%20site%20in%20Karelia.%20Historic%20Orthodox%20church%20with%20unique%20wooden%20architecture.%20Famous%20landmark%20with%20intricate%20wooden%20construction%20without%20nails.%20Traditional%20Russian%20religious%20building%20on%20island%20setting&width=600&height=400&seq=about3&orientation=landscape" alt="Кижи" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="https://readdy.ai/api/search-image?query=Northern%20lights%20%28aurora%20borealis%29%20over%20Karelian%20lake%20and%20forest.%20Vibrant%20green%20and%20purple%20lights%20dancing%20in%20night%20sky.%20Spectacular%20natural%20phenomenon%20reflecting%20in%20still%20water.%20Magical%20winter%20scene%20with%20snow-covered%20trees%20and%20colorful%20sky&width=600&height=400&seq=about4&orientation=landscape" alt="Северное сияние в Карелии" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="about" class="section" data-aos="fade-left">
-        <h2>О нас</h2>
-        <img src="img/4.jpg" alt="О нас">
+    <!-- Популярные направления -->
+    <section id="destinations" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Популярные направления</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Направление 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative h-64 destination-card">
+                        <img src="https://readdy.ai/api/search-image?query=Petrozavodsk%20city%20view%20with%20Onega%20Lake%2C%20Karelia.%20Beautiful%20northern%20Russian%20city%20with%20waterfront%20promenade.%20Urban%20landscape%20with%20historical%20buildings%20and%20natural%20surroundings.%20City%20center%20with%20cultural%20landmarks%20and%20lake%20panorama&width=800&height=500&seq=dest1&orientation=landscape" alt="Петрозаводск" class="w-full h-full object-cover">
+                        <div class="destination-overlay absolute inset-0 bg-black/40 opacity-0 transition flex items-center justify-center">
+                            <button class="px-5 py-2 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition">Подробнее</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Петрозаводск</h3>
+                        <p class="text-gray-600 mb-4">Столица Карелии, расположенная на берегу Онежского озера. Город сочетает в себе исторические достопримечательности, современную набережную и является отличной отправной точкой для путешествий по региону.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Узнать больше
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Направление 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative h-64 destination-card">
+                        <img src="https://readdy.ai/api/search-image?query=Ruskeala%20Mountain%20Park%20in%20Karelia%20with%20underground%20lake%20in%20marble%20canyon.%20Beautiful%20turquoise%20water%20surrounded%20by%20marble%20walls.%20Tourist%20attraction%20with%20boats%20on%20crystal%20clear%20water.%20Natural%20landmark%20with%20dramatic%20lighting%20and%20rock%20formations&width=800&height=500&seq=dest2&orientation=landscape" alt="Горный парк Рускеала" class="w-full h-full object-cover">
+                        <div class="destination-overlay absolute inset-0 bg-black/40 opacity-0 transition flex items-center justify-center">
+                            <button class="px-5 py-2 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition">Подробнее</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Горный парк Рускеала</h3>
+                        <p class="text-gray-600 mb-4">Уникальный природный объект — бывший мраморный карьер, превращенный в туристический комплекс. Изумрудная вода, мраморные скалы и подземные пещеры создают незабываемые впечатления.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Узнать больше
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Направление 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative h-64 destination-card">
+                        <img src="https://readdy.ai/api/search-image?query=Kizhi%20Island%20wooden%20architecture%20museum%20in%20Karelia.%20UNESCO%20World%20Heritage%20site%20with%20traditional%20wooden%20churches.%20Historic%20Russian%20Orthodox%20church%20with%20multiple%20wooden%20domes.%20Open-air%20museum%20with%20preserved%20historical%20buildings%20on%20island&width=800&height=500&seq=dest3&orientation=landscape" alt="Остров Кижи" class="w-full h-full object-cover">
+                        <div class="destination-overlay absolute inset-0 bg-black/40 opacity-0 transition flex items-center justify-center">
+                            <button class="px-5 py-2 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition">Подробнее</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Остров Кижи</h3>
+                        <p class="text-gray-600 mb-4">Музей-заповедник деревянного зодчества под открытым небом. Главная достопримечательность — Преображенская церковь, построенная без единого гвоздя, входит в список ЮНЕСКО.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Узнать больше
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Направление 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative h-64 destination-card">
+                        <img src="https://readdy.ai/api/search-image?query=Valaam%20Island%20monastery%20in%20Karelia%2C%20Russia.%20Orthodox%20monastery%20complex%20on%20island%20in%20Ladoga%20Lake.%20Historic%20religious%20buildings%20with%20golden%20domes%20surrounded%20by%20northern%20forest.%20Spiritual%20retreat%20with%20ancient%20architecture%20and%20natural%20beauty&width=800&height=500&seq=dest4&orientation=landscape" alt="Валаамский архипелаг" class="w-full h-full object-cover">
+                        <div class="destination-overlay absolute inset-0 bg-black/40 opacity-0 transition flex items-center justify-center">
+                            <button class="px-5 py-2 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition">Подробнее</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Валаамский архипелаг</h3>
+                        <p class="text-gray-600 mb-4">Группа островов в северной части Ладожского озера с древним Спасо-Преображенским монастырем. Уникальная природа и духовное наследие привлекают тысячи паломников и туристов.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Узнать больше
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Направление 5 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative h-64 destination-card">
+                        <img src="https://readdy.ai/api/search-image?query=Kivach%20waterfall%20in%20Karelia%2C%20Russia.%20Powerful%20cascade%20waterfall%20surrounded%20by%20dense%20northern%20forest.%20Natural%20landmark%20with%20rushing%20water%20and%20rocky%20terrain.%20Scenic%20nature%20reserve%20with%20pristine%20wilderness%20and%20clear%20water&width=800&height=500&seq=dest5&orientation=landscape" alt="Водопад Кивач" class="w-full h-full object-cover">
+                        <div class="destination-overlay absolute inset-0 bg-black/40 opacity-0 transition flex items-center justify-center">
+                            <button class="px-5 py-2 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition">Подробнее</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Водопад Кивач</h3>
+                        <p class="text-gray-600 mb-4">Один из крупнейших равнинных водопадов Европы, расположенный на реке Суна. Заповедник вокруг водопада сохраняет уникальную флору и фауну карельских лесов.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Узнать больше
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Направление 6 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative h-64 destination-card">
+                        <img src="https://readdy.ai/api/search-image?query=White%20Sea%20coast%20in%20Karelia%20with%20rocky%20shores%20and%20northern%20vegetation.%20Arctic%20landscape%20with%20dramatic%20sky%20and%20clear%20water.%20Remote%20wilderness%20area%20with%20unique%20ecosystem.%20Pristine%20coastline%20with%20small%20islands%20and%20natural%20formations&width=800&height=500&seq=dest6&orientation=landscape" alt="Побережье Белого моря" class="w-full h-full object-cover">
+                        <div class="destination-overlay absolute inset-0 bg-black/40 opacity-0 transition flex items-center justify-center">
+                            <button class="px-5 py-2 bg-white text-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition">Подробнее</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Побережье Белого моря</h3>
+                        <p class="text-gray-600 mb-4">Северная часть Карелии с уникальными приливами и отливами, каменистыми берегами и арктической природой. Идеальное место для наблюдения за белыми ночами и северным сиянием.</p>
+                        <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                            Узнать больше
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contacts" class="section" data-aos="fade-up">
-        <h2>Контакты</h2>
-        <img src="img/5.jpg" alt="Контакты">
+    <!-- Природные достопримечательности -->
+    <section id="attractions" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Природные достопримечательности</h2>
+            
+            <div class="relative">
+                <div class="custom-slider flex overflow-x-auto gap-6 pb-8" id="attractionsSlider">
+                    <!-- Достопримечательность 1 -->
+                    <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                        <div class="h-64">
+                            <img src="https://readdy.ai/api/search-image?query=Ladoga%20Lake%20in%20Karelia%20with%20rocky%20islands%20and%20clear%20water.%20Largest%20lake%20in%20Europe%20with%20beautiful%20shoreline.%20Natural%20landscape%20with%20granite%20formations%20and%20northern%20vegetation.%20Pristine%20wilderness%20with%20calm%20water%20reflecting%20sky&width=800&height=500&seq=attr1&orientation=landscape" alt="Ладожское озеро" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Ладожское озеро</h3>
+                            <p class="text-gray-600">Крупнейшее пресноводное озеро в Европе с уникальной экосистемой. Живописные шхеры, каменистые острова и чистейшая вода создают неповторимые пейзажи.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Достопримечательность 2 -->
+                    <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                        <div class="h-64">
+                            <img src="https://readdy.ai/api/search-image?query=Paanaj%C3%A4rvi%20National%20Park%20in%20Karelia%20with%20deep%20canyon%20and%20river.%20Wild%20northern%20landscape%20with%20untouched%20forest%20and%20crystal%20clear%20water.%20Remote%20wilderness%20area%20with%20dramatic%20cliffs%20and%20rapids.%20Protected%20natural%20reserve%20with%20unique%20flora%20and%20fauna&width=800&height=500&seq=attr2&orientation=landscape" alt="Национальный парк Паанаярви" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Национальный парк Паанаярви</h3>
+                            <p class="text-gray-600">Заповедная территория с глубочайшим в Фенноскандии каньоном, кристально чистыми озерами и нетронутыми лесами. Рай для любителей экотуризма.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Достопримечательность 3 -->
+                    <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                        <div class="h-64">
+                            <img src="https://readdy.ai/api/search-image?query=Vottovaara%20Mountain%20in%20Karelia%20with%20mysterious%20stone%20formations.%20Ancient%20sacred%20place%20with%20unusual%20rock%20structures.%20Mystical%20landscape%20with%20fog%20and%20moss-covered%20stones.%20Remote%20wilderness%20area%20with%20unique%20geological%20features%20and%20spiritual%20significance&width=800&height=500&seq=attr3&orientation=landscape" alt="Гора Воттоваара" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Гора Воттоваара</h3>
+                            <p class="text-gray-600">Мистическое место с необычными каменными образованиями. Считается древним саамским святилищем и привлекает любителей загадочных мест и необычных пейзажей.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Достопримечательность 4 -->
+                    <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                        <div class="h-64">
+                            <img src="https://readdy.ai/api/search-image?query=Karelian%20White%20Bridges%20waterfalls%20with%20multiple%20cascades%20surrounded%20by%20forest.%20Series%20of%20small%20waterfalls%20on%20Kulismajoki%20River.%20Natural%20landmark%20with%20rushing%20water%20over%20rocky%20terrain.%20Beautiful%20wilderness%20setting%20with%20clear%20water%20and%20lush%20vegetation&width=800&height=500&seq=attr4&orientation=landscape" alt="Белые мосты" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Белые мосты</h3>
+                            <p class="text-gray-600">Два живописных водопада на реке Кулисмайоки высотой около 19 метров. Окружающие скалы и лес создают атмосферу нетронутой природы и дикой красоты.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Достопримечательность 5 -->
+                    <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                        <div class="h-64">
+                            <img src="https://readdy.ai/api/search-image?query=Ancient%20petroglyphs%20at%20White%20Sea%20coast%20in%20Karelia.%20Prehistoric%20rock%20carvings%20depicting%20hunting%20scenes%20and%20animals.%20Archaeological%20site%20with%20historical%20significance.%20Stone%20age%20art%20preserved%20on%20coastal%20rocks%20with%20natural%20surroundings&width=800&height=500&seq=attr5&orientation=landscape" alt="Беломорские петроглифы" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Беломорские петроглифы</h3>
+                            <p class="text-gray-600">Древние наскальные рисунки возрастом более 5000 лет. Уникальный археологический памятник, рассказывающий о жизни древних людей, населявших эти земли.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Навигационные кнопки -->
+                <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-100 focus:outline-none z-10">
+                    <i class="ri-arrow-left-s-line ri-xl"></i>
+                </button>
+                
+                <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-100 focus:outline-none z-10">
+                    <i class="ri-arrow-right-s-line ri-xl"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Контактная информация -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Свяжитесь с нами</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <form class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6">Есть вопросы? Напишите нам</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Имя</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Ваше имя">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Ваш email">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Тема</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Тема сообщения">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Сообщение</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Ваше сообщение"></textarea>
+                        </div>
+                        
+                        <div class="mb-6 flex items-start">
+                            <label class="custom-checkbox flex items-center">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="ml-3 text-sm text-gray-600">Я согласен на обработку персональных данных</span>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-blue-600 transition">Отправить сообщение</button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Контактная информация</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-map-pin-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Адрес</h4>
+                                    <p class="text-gray-600">г. Петрозаводск, пр. Ленина, 31</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-phone-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Телефон</h4>
+                                    <p class="text-gray-600">+7 (8142) 76-54-32</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-mail-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Email</h4>
+                                    <p class="text-gray-600">info@karelia-travel.ru</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-time-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Время работы</h4>
+                                    <p class="text-gray-600">Пн-Пт: 9:00 - 18:00<br>Сб-Вс: 10:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Мы в социальных сетях</h3>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-vk-fill ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-telegram-fill ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-youtube-fill ri-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition">
+                                <i class="ri-instagram-fill ri-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="h-80 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Карта Карелии" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
+    <!-- Футер -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="text-3xl font-['Pacifico'] text-white mb-4 inline-block">Карелия</a>
+                    <p class="text-gray-400 mb-6">Откройте для себя удивительный край тысячи озер, древних лесов и богатой культуры.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-vk-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-telegram-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-youtube-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-400 hover:bg-primary hover:text-white transition">
+                            <i class="ri-instagram-fill ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Навигация</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Главная</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">О Карелии</a></li>
+                        <li><a href="#destinations" class="text-gray-400 hover:text-white transition">Направления</a></li>
+                        <li><a href="#attractions" class="text-gray-400 hover:text-white transition">Достопримечательности</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Полезные ссылки</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Туры и экскурсии</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Размещение</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Транспорт</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Карта Карелии</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="ri-map-pin-line ri-lg text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">г. Петрозаводск, пр. Ленина, 31</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-phone-line ri-lg text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">+7 (8142) 76-54-32</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-mail-line ri-lg text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">info@karelia-travel.ru</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-time-line ri-lg text-gray-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">Пн-Пт: 9:00 - 18:00<br>Сб-Вс: 10:00 - 16:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Карелия. Все права защищены.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script id="sliderScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('attractionsSlider');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            const slideWidth = 420; // Ширина слайда + отступ
+            
+            nextBtn.addEventListener('click', function() {
+                slider.scrollLeft += slideWidth;
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                slider.scrollLeft -= slideWidth;
+            });
         });
     </script>
-    <script src="js/script.js"></script>
+
+    <script id="smoothScrollScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Учитываем высоту навигации
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="stickyHeaderScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.add('shadow-sm');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
